@@ -35,7 +35,7 @@ def main(host: str, port: int):
                     #     peer
                     # )
                     sock.write(
-                        Message(MessageEvent.LISTEN_TO, f'{peer.host}:{peer.port}'),
+                        Message(MessageEvent.LISTEN_ON, f'{peer.host}:{peer.port}'),
                         peer
                     )
 
