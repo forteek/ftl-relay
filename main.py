@@ -27,11 +27,11 @@ def main(host: str, port: int):
             if filename in known_files:
                 for owner in known_files[filename]:
                     sock.write(
-                        Message(MessageEvent.NEED, f'{peer}:{filename}'),
+                        Message(MessageEvent.NEED, f'{peer.host}:{peer.port}|{filename}'),
                         owner
                     )
                     sock.write(
-                        Message(MessageEvent.HAS, f'{owner}:{filename}'),
+                        Message(MessageEvent.HAS, f'{owner.host}:{owner.port}|{filename}'),
                         peer
                     )
 
