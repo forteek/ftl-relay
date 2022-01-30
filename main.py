@@ -20,16 +20,22 @@ def main(host: str, port: int):
             else:
                 known_files[data.content] = [peer]
 
+            print(f'{peer} has {filename}')
+
         elif data.event == MessageEvent.NEED:
             filename = data.content
             if filename in known_files:
-                for peer in known_files[filename]:
+                for owner in known_files[filename]:
                     sock.write(
-                        Message(MessageEvent.NEED, filename),
+                        Message(MessageEvent.NEED, f'{peer}:{filename}'),
+                        owner
+                    )
+                    sock.write(
+                        Message(MessageEvent.HAS, f'{owner}:{filename}'),
                         peer
                     )
 
-        print(known_files)
+            print(f'{peer} needs {filename}')
 
 
 if __name__ == '__main__':
