@@ -30,8 +30,12 @@ def main(host: str, port: int):
                         Message(MessageEvent.NEED, f'{peer.host}:{peer.port}|{filename}'),
                         owner
                     )
+                    # sock.write(
+                    #     Message(MessageEvent.HAS, f'{owner.host}:{owner.port}|{filename}'),
+                    #     peer
+                    # )
                     sock.write(
-                        Message(MessageEvent.HAS, f'{owner.host}:{owner.port}|{filename}'),
+                        Message(MessageEvent.LISTEN_TO, f'{peer.host}:{peer.port}'),
                         peer
                     )
 

@@ -5,6 +5,7 @@ import json
 class MessageEvent(Enum):
     HAS = 'has'
     NEED = 'need'
+    LISTEN_ON = 'listen_on'
 
 
 class Message:
